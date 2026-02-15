@@ -2,4 +2,5 @@ Backend/.venv/
 __pycache__/
 *.pyc
 app.db
+backpack.db
 
