@@ -1,6 +1,6 @@
 # for backend
 
-FastAPI + SQLite. main.py has the app and CORS, database.py is for get_db and init_db, routers have notes/todos/folders for far.
+FastAPI + SQLite. main.py has the app and CORS, database.py is for get_db and init_db, routers have notes/todos/folders for far. See **TEAM_GUIDE.md** for a longer explanation to share with teammates.
 
 **4 running it:**
 - cd Backend
