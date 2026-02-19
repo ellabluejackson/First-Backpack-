@@ -121,6 +121,10 @@
     }
 
 /* New button in a different color*/
+    .toolbar .nav-new-wrapper {
+      position: relative;
+    }
+
     .toolbar a.nav-new {
       color: var(--accent);
     }
@@ -128,6 +132,55 @@
     .toolbar a.nav-new:hover {
       background: #fff0f3;
       color: #e84565;
+    }
+
+    /* Dropdown menu for New button */
+    .new-dropdown {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      min-width: 180px;
+      padding: 8px 0;
+      z-index: 200;
+      animation: dropdownFade 0.15s ease;
+    }
+
+    .new-dropdown.show {
+      display: block;
+    }
+
+    @keyframes dropdownFade {
+      from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    .new-dropdown a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 0;
+      transition: background 0.15s;
+    }
+
+    .new-dropdown a:hover {
+      background: var(--bg);
+      color: var(--primary);
+    }
+
+    .new-dropdown a .dropdown-icon {
+      font-size: 1.2rem;
     }
 
  /* Backpack Area*/
@@ -206,7 +259,7 @@
       box-shadow: 0 6px 20px rgba(108, 99, 255, 0.45);
     }
 
- /* Folder Grid (placeholder)*/
+ /* Folder Grid (placeholder for future)*/
     .folders-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -282,10 +335,17 @@
         <span class="nav-icon">✅</span>
         To Do
       </a>
-      <a href="#" class="nav-new">
-        <span class="nav-icon">✨</span>
-        New
-      </a>
+      <div class="nav-new-wrapper">
+        <a href="#" class="nav-new" id="newBtn" onclick="toggleNewMenu(event)">
+          <span class="nav-icon">✨</span>
+          New
+        </a>
+        <div class="new-dropdown" id="newDropdown">
+          <a href="#" onclick="handleNew('folder')">Folder</a>
+          <a href="#" onclick="handleNew('notebook')">Notebook</a>
+          <a href="#" onclick="handleNew('flashcards')">Flashcards</a>
+        </div>
+      </div>
     </nav>
   </div>
 
@@ -299,7 +359,7 @@
       <!-- future folder can cards go here -->
     </div>
 
-    <!-- empty, shown when there are no folders yet -->
+    <!-- empty state shown when there are no folders yet -->
     <div class="empty-state">
       <div class="empty-icon">📂</div>
       <h2>No folders yet!</h2>
@@ -310,10 +370,34 @@
     </div>
   </main>
 
-  <!-- footer -->
+  <!-- Footer -->
   <footer>
     <p>&copy; 2026 First Digital Backpack</p>
   </footer>
+
+  <script>
+    /* Toggle the New dropdown menu */
+    function toggleNewMenu(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById('newDropdown').classList.toggle('show');
+    }
+
+    /* Close dropdown when clicking anywhere else */
+    document.addEventListener('click', function (e) {
+      const dropdown = document.getElementById('newDropdown');
+      if (!e.target.closest('.nav-new-wrapper')) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    /* Handle dropdown option clicks (placeholder ) */
+    function handleNew(type) {
+      document.getElementById('newDropdown').classList.remove('show');
+      console.log('Create new:', type);
+      // Future: open a creation form for the selected type
+    }
+  </script>
 
 </body>
 </html>
