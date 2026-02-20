@@ -8,3 +8,4 @@ FastAPI + SQLite. main.py has the app and CORS, database.py is for get_db and in
 - uvicorn main:app --reload
 - open http://127.0.0.1:8000/docs 
 
+
