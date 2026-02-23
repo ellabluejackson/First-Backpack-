@@ -30,5 +30,6 @@ def init_db():
             name TEXT NOT NULL
         );
     """)
+    #need to add another one for game
     conn.commit()
     conn.close()
