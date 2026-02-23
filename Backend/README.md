@@ -1,11 +1,9 @@
-# for backend
+# backend
 
-FastAPI + SQLite. main.py has the app and CORS, database.py is for get_db and init_db, routers have notes/todos/folders for far. See **TEAM_GUIDE.md** for a longer explanation to share with teammates.
-
-**4 running it:**
-- cd Backend
-- pip install -r requirements.txt  (or pip3)
-- uvicorn main:app --reload
-- open http://127.0.0.1:8000/docs 
+**Run it:**
+1. `cd Backend`
+2. `pip install -r requirements.txt`  (or pip3)
+3. `uvicorn main:app --reload`
+4. Open http://127.0.0.1:8000/docs in your browser
 
 
